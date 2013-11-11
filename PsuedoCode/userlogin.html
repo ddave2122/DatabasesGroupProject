@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Inventory Management Website</title>
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/body.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="javascripts/behavior.js"></script>
+    <script type="text/javascript" src="javascripts/ajax.js"></script>
+    <script type="text/javascript" src="javascripts/basicfunctions.js"></script>
+    <link rel="shortcut icon" href="images/generic_tablet.jpg" >
+    <!--[if IE]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body onload="cookieMonsterEat('userName')">
+<header id="mast">
+    <h1>Inventory Management Website</h1>
+</header>
+<nav id="global">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a class="selected" href="userlogin.html">User Login</a></li>
+        <li><a href="inventorydisplay.php">Inventory Display</a></li>
+        <li><a href="inventorymodification.php">Inventory Modification</a></li>
+    </ul>
+</nav>
+<section id="intro">
+    <header>
+        <h2>User Login</h2>
+    </header>
+</section>
+<form name="userlogin" action="userlogin.php" method="post" onSubmit="return checkLoginFields(this);" >
+    <p>
+    <table>
+        <tr><th>Username:&nbsp</th> <td><input type="text" name="username" id="username"/></td></tr>
+        <tr><th>Password:&nbsp</th> <td><input type="password" name="password" id="password"/></td></tr>
+    </table>
+    <input type="button" id="button" value="Login" onclick="checkPassword('username', 'password')"/>
+    </p>
+</form>
+
+<footer>
+    <div class="clear">
+        <section id="about">
+            <header>
+                <h3>Contact Us</h3>
+            </header>
+            <p><a href="mailto:dgibbs7@student.gsu.edu">email</a> </p>
+        </section>
+
+        <section>
+            <header>
+                <h3>Site Map</h3>
+            </header>
+            <nav id="siteMap">
+                <li><a class="selected" href="index.html">Home</a></li>
+                <li><a href="userlogin.html">User Login</a></li>
+                <li><a href="inventorydisplay.php">Inventory Display</a></li>
+                <li><a href="inventorymodification.php">Inventory Modification</a></li>
+                </ul>
+            </nav>
+        </section>
+    </div>
+</footer>
+</body>
+</html>

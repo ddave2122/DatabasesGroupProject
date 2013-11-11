@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once 'config.php';
+include_once 'config.dbconfig.inc';
 
 //If the user is already logged in
 if($_SESSION['authorized'] == true)

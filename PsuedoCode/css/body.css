@@ -1,0 +1,70 @@
+
+/* Body CSS Document */
+
+#bodyHead{
+	position:relative;
+	top: 30px;
+	left: 20px;	
+}
+
+.bodyHead{
+	position:relative;
+	left: -35px;	
+}
+
+.wordText {color: green;}
+#Book {
+	background:#000; 
+	color:#FFF; 
+	font:Arial, Helvetica, sans-serif; 
+	font-size: 14px; 
+	font-weight:bold; 
+	padding: 10px; 
+	border-radius: 10px;
+	position: relative;
+	left: 20px;
+	top: 80px;
+	z-index: 0;
+}
+
+
+
+#paraBody{
+	position:relative;
+	left: 50px;	
+	top: 40px;
+	width: 600px;
+	font:Verdana, Geneva, sans-serif;
+	font-size: 14px;
+}
+
+#strong{
+	font-weight: bold;
+	font-size:16px;
+}
+
+#footer{
+	position:relative;
+	top:-500px;
+}
+.td{
+	padding:10px;
+}
+
+.th{
+	padding:10px;
+	text-align: right;
+}
+
+.show{
+	list-style:disc;
+	position: relative;
+	left: 50px;
+		
+}
+
+.move{
+	position:relative;
+	top: 5px;
+	left: 50px;
+}
