@@ -11,7 +11,7 @@ $host = '127.0.0.1';
 $username = 'root';
 
 //Database Object
-$database = 'pseudocode';
+$database = 'company';
 
 //Database Password
 $password = 'liosD76ambf';
@@ -24,7 +24,7 @@ $redirectPage = "home.php";
 $userLogin = "userlogin.html";
 
 //Inventory modifications options listing
-$inventoryModificationOptions = 'inventorymodification.php';
+$inventoryModificationOptions = 'inventorymodificationhistory.php';
 
 //Inventory display options
 $inventoryDisplayOptions = 'inventorydisplay.php';

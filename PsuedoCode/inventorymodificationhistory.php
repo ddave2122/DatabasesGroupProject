@@ -13,19 +13,13 @@ if($wrap->checkUserVerification() == false)
 //write the page header
 $wrap->createHeader();
 
-$wrap->createTopMenu(2, "Inventory Display Options");
+$wrap->createTopMenu(2, "Inventory Modification History");
 
 //$wrap->createMainPageBody();
 
 echo <<< EOT
 
-<p>
-    <ul>
-        <li><a href="purchasehistory.php">View Purchase History </a></li>
-        <li><a href="inventorymodificationhistory.php">View Inventory Modification History</a></li>
-    </ul>
-    <br /> <br />
-</p>
+<p>Body goes here</p>
 
 EOT;
 

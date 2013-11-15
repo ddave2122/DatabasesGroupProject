@@ -47,6 +47,12 @@ EOT;
     //Create the top menu and highlight the button for the current page
     public function createTopMenu($menuSelection = 0, $title)
     {
+
+        $home = "<li><a href=\"index.html\">Home</a></li>";
+        $userLogin = "<li><a href=\"userlogin.html\">User Login</a></li>";
+        $inventoryDisplay = "<li><a href=\"inventoryDisplay.php\">Inventory Display</a></li>";
+        $inventoryModification = "<li><a href=\"inventorymodificationhistory.php\">Inventory Modification</a></li>";
+
         $menuItem = null;
         switch($menuSelection)
         {
@@ -55,9 +61,9 @@ EOT;
                 <nav id="global">
                     <ul>
                         <li><a class="selected"  href="index.html">Home</a></li>
-                        <li><a href="userlogin.html">User Login</a></li>
-                        <li><a href="contact.html">Inventory Display</a></li>
-                        <li><a href="contact.html">Inventory Modification</a></li>
+                        $userLogin
+                        $inventoryDisplay
+                        $inventoryModification
                     </ul>
                 </nav>
 EOT;
@@ -67,10 +73,10 @@ EOT;
                 echo <<< EOT
                 <nav id="global">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        $home
                         <li><a class="selected"  href="userlogin.html">User Login</a></li>
-                        <li><a href="contact.html">Inventory Display</a></li>
-                        <li><a href="contact.html">Inventory Modification</a></li>
+                        $inventoryDisplay
+                        $inventoryModification
                     </ul>
                 </nav>
 EOT;
@@ -79,10 +85,10 @@ EOT;
                 echo <<< EOT
                 <nav id="global">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="userlogin.html">User Login</a></li>
-                        <li><a class="selected"  href="contact.html">Inventory Display</a></li>
-                        <li><a  href="contact.html">Inventory Modification</a></li>
+                        $home
+                        $userLogin
+                        <li><a class="selected"  href="inventorydisplay.php">Inventory Display</a></li>
+                        $inventoryModification
                     </ul>
                 </nav>
 EOT;
@@ -91,10 +97,10 @@ EOT;
                 echo <<< EOT
                 <nav id="global">
                     <ul>
-                        <li><a  href="index.html">Home</a></li>
-                        <li><a href="userlogin.html">User Login</a></li>
-                        <li><a href="contact.html">Inventory Display</a></li>
-                        <li><a class="selected"  href="contact.html">Inventory Modification</a></li>
+                        $home
+                        $userLogin
+                        $inventoryDisplay
+                        <li><a class="selected"  href="inventorymodification.php">Inventory Modification</a></li>
                     </ul>
                 </nav>
 EOT;
