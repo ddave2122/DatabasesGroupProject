@@ -17,7 +17,7 @@ if(!$er) {
 
 $id = $_GET['id'];
 $quantity = $_GET['quantity'];
-$mainquery = "UPDATE company_revised.tbl_inventory set amount_bags = $quantity WHERE item_id = $id ";
+$mainquery = "UPDATE company_revised.tbl_inventory set amount_bags = $quantity WHERE item_id = $id";
 
 $result = mysql_query($mainquery);
 if (!$result) {
@@ -29,6 +29,3 @@ if (!$result) {
 echo($quantity);
 
 mysql_close($db);
-
-?>
-

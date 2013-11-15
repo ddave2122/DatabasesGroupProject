@@ -3,23 +3,12 @@ session_start();
 
 include_once 'config.dbconfig.inc';
 
-//If the user is already logged in
-if($_SESSION['authorized'] == true)
-    //Direct the user to the next page
-    echo("
-        <html>
-            <head>
-                <script type=\"text/javascript\">
-                    window.location = " . $redirectPage . "
-                </script>
-            </head>
-        </html>
-    ");
 
 //TODO need to redirect the user to the login page is they did not previously come from that page or are currently logged in
 //Retrieve the username and password
-$password = $_POST['password'];
-$username = $_POST['login'];
+$password_post = $_POST['password'];
+$username_post = $_POST['username'];
+
 
 //Set the authorization to false by default for the session
 $_SESSION['authorized'] = false;
@@ -40,20 +29,21 @@ if(!$er) {
 //SP output: boolean, true if the user is authorized, false otherwise
 
 //Get the permission level from the DB
-$mainquery = "SELECT * FROM website_users where userid = '" . $username . "' AND password = '" . $password ."';";
+$mainquery = "SELECT * FROM tbl_employees where user_name = '" . $username_post . "'";// AND password = '" . $password_post ."';";
+
 $result = mysql_query($mainquery);
 if (!$result) {
     $message  = 'Invalid query: ' . mysql_error() . "\n";
     $message .= 'Whole query: ' . $mainquery;
     die($message);
 }
-
+echo($mainquery);
 $db_field = mysql_fetch_assoc($result);
 
 //Clean up
-mysql_close($db);
 
-if($db_field['authorized'] == true)
+
+if($db_field['employee_id'] != "")
 {
     //Persist the authorization for the session
     $_SESSION['authorized'] = true;
@@ -63,7 +53,7 @@ if($db_field['authorized'] == true)
         <html>
             <head>
                 <script type=\"text/javascript\">
-                    window.location = " . $redirectPage . "
+                    window.location = 'inventorydisplay.php.
                 </script>
             </head>
         </html>
@@ -72,14 +62,16 @@ if($db_field['authorized'] == true)
 //If not authenticated, alert the user and direct them back to the login page
 else
 {
-    echo("
+    echo <<< EOT
         <html>
             <head>
                 <script type=\"text/javascript\">
-                    alert('Username and passrod cominabtion not found');
-                    window.location = " . $userLogin . "
+                    alert('Username and password cominabtion not found');
+                    window.location = index.html
                 </script>
             </head>
         <html>
-    ");
+EOT;
+mysql_close($db);
+
 }

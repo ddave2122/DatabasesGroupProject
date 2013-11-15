@@ -11,7 +11,7 @@ $host = '127.0.0.1';
 $username = 'root';
 
 //Database Object
-$database = 'company';
+$database = 'company_revised';
 
 //Database Password
 $password = 'liosD76ambf';

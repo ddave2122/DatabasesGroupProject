@@ -33,13 +33,13 @@
         <h2>User Login</h2>
     </header>
 </section>
-<form name="userlogin" action="userlogin.php" method="post" onSubmit="return checkLoginFields(this);" >
+<form name="userlogin" action="userlogin.php" method="post"  >
     <p>
     <table>
         <tr><th>Username:&nbsp</th> <td><input type="text" name="username" id="username"/></td></tr>
         <tr><th>Password:&nbsp</th> <td><input type="password" name="password" id="password"/></td></tr>
     </table>
-    <input type="button" id="button" value="Login" onclick="checkPassword('username', 'password')"/>
+    <input type="submit" id="button" value="Login" />
     </p>
 </form>
 

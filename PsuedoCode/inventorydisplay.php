@@ -23,6 +23,8 @@ echo <<< EOT
     <ul>
         <li><a href="purchasehistory.php">View Purchase History </a></li>
         <li><a href="inventorymodificationhistory.php">View Inventory Modification History</a></li>
+        <li><a href="viewdistributors.php">View Distributors</a></li>
+        <li><a href="viewinventoryitems.php">View Inventory Items</a></li>
     </ul>
     <br /> <br />
 </p>
