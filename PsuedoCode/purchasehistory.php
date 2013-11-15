@@ -72,6 +72,8 @@ if (!$result) {
 $uname = "";
 $orderId = -1;
 
+echo("<h1>Users</h1>");
+
 
 while($db_field = mysql_fetch_assoc($result)) {
     if($uname != $db_field['user_name'])
@@ -83,32 +85,31 @@ while($db_field = mysql_fetch_assoc($result)) {
         }
         $uname = $db_field['user_name'];
         echo <<< EOT
-            <br />
-            <table border=\"2\"  id="mytable$tableCounter">
+
+            <table  id="mytable$tableCounter">
             <thead>
-                <tr>
+                <tr">
                     <td>
-                        <a id="anchor$tableCounter" class="expand$tableCounter" href="#anchor$tableCounter">$uname</a>
+                        <a id="anchor$tableCounter" class="expand$tableCounter" href="#anchor$tableCounter" onclick="return false;">$uname</a>
                     </td>
                     <td>
-                        <a id="anchor$tableCounter" class="collapse$tableCounter" href="#anchor$tableCounter">Collapse</a>
+                        <a style="visibility:hidden" id="anchorcollapse$tableCounter" class="collapse$tableCounter" href="#anchor$tableCounter" onclick="return false;">Collapse</a>
                     </td>
                     <td></td>
                 </tr>
-                <tr>
-                    <td>
+                <tr id="row1$tableCounter" style="visibility: hidden;" >
+                    <td >
                         <b>user name</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                     </td>
                     <td align=\"center\" >
                         <b>Name</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-
                     </td>
                     <td align=\"center\">
                         <b>Order id</b>
                     </td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
 EOT;
         $tableCounter++;
     }
@@ -157,7 +158,7 @@ $sideTables[$tableCounter] =  <<< EOT
 EOT;
 
 }
-echo("</table><br /><br /><br /><br />");
+echo("</table>");
 
 echo("<script>");
 for($i = 0; $i < $tableCounter; $i++)
@@ -168,10 +169,13 @@ for($i = 0; $i < $tableCounter; $i++)
          $(document).ready(function () {
                 $(".expand$i").click(function () {
                     $("#mytable$i tbody").show("slow");
-
+                    document.getElementById("anchorcollapse$i").style.visibility="visible";
+                    document.getElementById("row1$i").style.visibility="visible";
                 });
                 $(".collapse$i").click(function () {
                     $("#mytable$i tbody").hide("slow");
+                    document.getElementById("anchorcollapse$i").style.visibility="hidden";
+                    document.getElementById("row1$i").style.visibility="hidden";
                 });
             });
 EOT;

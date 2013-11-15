@@ -51,7 +51,7 @@ EOT;
         $home = "<li><a href=\"index.html\">Home</a></li>";
         $userLogin = "<li><a href=\"userlogin.html\">User Login</a></li>";
         $inventoryDisplay = "<li><a href=\"inventoryDisplay.php\">Inventory Display</a></li>";
-        $inventoryModification = "<li><a href=\"inventorymodificationhistory.php\">Inventory Modification</a></li>";
+        $inventoryModification = "<li><a href=\"inventorymodification.php\">Inventory Modification</a></li>";
 
         $menuItem = null;
         switch($menuSelection)
@@ -162,8 +162,8 @@ EOT;
                         <ul>
                             <li><a class="selected" href="index.html">Home</a></li>
                             <li><a href="userlogin.html">User Login</a></li>
-                            <li><a href="contact.html">Inventory Display</a></li>
-                            <li><a href="contact.html">Inventory Modification</a></li>
+                            <li><a href="inventorydisplay.php">Inventory Display</a></li>
+                            <li><a href="inventorymodification.php">Inventory Modification</a></li>
                         </ul>
                         </nav>
                     </section>

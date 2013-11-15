@@ -18,9 +18,15 @@ $wrap->createTopMenu(3, "Inventory Modification Options");
 //$wrap->createMainPageBody();
 
 echo <<< EOT
+
 <p>
-here is where the body will go.
+    <ul>
+        <li><a href="editinventoryquantities.php">Edit Inventory Quantities</a></li>
+        <li><a href="edititemprices.php">Edit Item Prices</a></li>
+    </ul>
+    <br /> <br />
 </p>
+
 EOT;
 
 
