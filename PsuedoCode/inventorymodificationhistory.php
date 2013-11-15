@@ -25,12 +25,13 @@ SELECT
 	, im.quantity_changed
 	, im.item_id
 FROM
-	company.tbl_employees e
-	, company.tbl_inventory i
-	, company.tbl_inventory_modifications im
+	company_revised.tbl_employees e
+	, company_revised.tbl_inventory i
+	, company_revised.tbl_inventory_modifications im
 WHERE
 	e.employee_id = im.employee_id
 	AND i.item_id = im.item_id
+ORDER BY im.modification_date DESC
 EOT;
 
 

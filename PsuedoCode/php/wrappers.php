@@ -32,11 +32,12 @@ class Wrappers
                 <link rel="stylesheet" href="css/default.css">
                 <link rel="stylesheet" href="css/body.css">
                 <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+                <script type="text/javascript" src="js/ajax.js"></script>
                 <!--[if IE]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->
             </head>
-            <body onload="cookieMonsterEat('userName')">
+            <body>
                 <header id="mast">
                     <h1>Psuedo Code</h1>
                 </header>

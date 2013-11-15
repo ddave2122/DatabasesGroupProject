@@ -17,14 +17,9 @@ $wrap->createTopMenu(3, "Inventory Modification Options");
 
 //$wrap->createMainPageBody();
 
-echo <<< EOT
-
-
-EOT;
-
-
 $query = <<< EOT
 SELECT
+    distinct
 	i.item_id
 	, i.item_name
 	, d.distributor_name
@@ -33,15 +28,13 @@ SELECT
 	, i.minimum_amount
 	, d.name
 FROM
-    company.tbl_inventory i
-    , company.tbl_distributors_inventory di
-    , company.tbl_distributors d
+    company_revised.tbl_inventory i
+    , company_revised.tbl_distributor_inventory di
+    , company_revised.tbl_distributors d
 WHERE
-    i.distributor_id = di.distributor_id
-    AND di.distributor_id = d.distributor_id
-ORDER BY item_id
+	i.distributor_id = d.distributor_id
+ORDER BY item_id;
 EOT;
-
 
 //Connect to the DB
 $db = mysql_connect($host, $username, $password);
@@ -77,18 +70,21 @@ echo <<< EOT
     </tr>
 EOT;
 
-
+$counter = 1;
 while($db_field = mysql_fetch_assoc($result)) {
     echo("<tr>");
+    $id = $db_field['item_id'];
     echo( "<td>&nbsp" . $db_field['item_id'] .  "&nbsp</td>" .
-        "<td>&nbsp" . $db_field['distributor'] .  "&nbsp</td>" .
+        "<td>&nbsp" . $db_field['item_name'] .  "&nbsp</td>" .
+        "<td>&nbsp" . $db_field['distributor_name'] .  "&nbsp</td>" .
         "<td>&nbsp" . $db_field['amount_tins'] .  "&nbsp</td>" .
-        "<td>&nbsp" . $db_field['amunt_bags'] .  "&nbsp</td>" .
+        "<td><div id=\"t$counter\">" . $db_field['amount_bags'] .  "</div></td>" .
         "<td>&nbsp" . $db_field['minimum_amount'] .  "&nbsp</td>" .
         "<td><input type='text' style='width:115px '   id='" . $id . "' value=''></td>" .
         "<td><input type='button' value='Add' onclick='addItem(" . $id . ")' " .
         "<td><input type='button' value='Remove' onclick='removeItem(" . $id . ")' "
     );
+    $counter++;
     echo("</tr>");
 }
 echo("</table><br /><br /><br /><br />");

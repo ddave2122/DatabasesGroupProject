@@ -20,7 +20,6 @@ $wrap->createTopMenu(2, "Inventory Display Options");
 //Generate a table for all of the purchase items
 
 $query = <<< EOT
--- Select orders that pertain to one employee
 SELECT
 	e.user_name
 	,e.first_name
@@ -35,15 +34,15 @@ SELECT
 	, oi.number_of_8oz
 	, oi.number_of_16oz
 FROM
-	tbl_employees e
-	, tbl_orders o
-	, tbl_inventory i
-	, tbl_order_items oi
+	company_revised.tbl_employees e
+	, company_revised.tbl_orders o
+	, company_revised.tbl_inventory i
+	, company_revised.tbl_order_items oi
 WHERE
 	 i.item_id = oi.item_id
 	AND o.order_id = oi.order_id
 	AND e.employee_id = o.employee_id
-ORDER BY e.user_name, e.first_name, e.last_name, o.order_id
+ORDER BY e.user_name, e.first_name, e.last_name, o.order_id;
 EOT;
 
 $tableCounter = 0;
@@ -66,7 +65,7 @@ if(!$er) {
 $result = mysql_query($query);
 if (!$result) {
     $message  = 'Invalid query: ' . mysql_error() . "\n";
-    $message .= 'Whole query: ' . $mainquery;
+    $message .= 'Whole query: ' . $query;
     die($message);
 }
 $uname = "";

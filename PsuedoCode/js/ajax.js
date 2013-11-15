@@ -246,3 +246,61 @@ var flight = document.getElementById("flightNumberField").value;
 xmlhttp.open("GET","php/getSeatInfo.php?flight=" + flight, true);
 xmlhttp.send(null);
 }
+
+
+function addItem($id)
+{
+    $currentQuantity = parseInt(document.getElementById("t"+$id).innerHTML, 10);
+    alert($currentQuantity);
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            var costId = $id + "cost"; //will be used to calculate the new inventory worth on update
+            document.getElementById($id).value = "Added " + document.getElementById($id).value + "lbs";
+            document.getElementById("t"+$id).value = newQuantity;
+        }
+    }
+    alert($id);
+    var newQuantity = parseInt($currentQuantity, 10) + parseInt(document.getElementById($id).value, 10);
+    document.getElementById("t"+$id).innerHTML = newQuantity+".00";
+    xmlhttp.open("GET","php/updatedatabase.php?id=" + $id + "&quantity=" + newQuantity, true);
+    xmlhttp.send();
+}
+
+function removeItem($id)
+{
+    currentQuantity = parseInt(document.getElementById('t'+$id).innerHTML, 10);
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {// code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            var newId = $id + "t";
+            document.getElementById($id).value = "Removed " + document.getElementById($id).value + "lbs";
+            document.getElementById(newId).innerHTML = xmlhttp.responseText;
+            document.getElementById("t"+$id).value = newQuantity;
+        }
+    }
+    var newQuantity = parseInt(currentQuantity) - parseInt(document.getElementById($id).value);
+    document.getElementById("t"+$id).innerHTML = newQuantity+".00";
+    xmlhttp.open("GET","php/updatedatabase.php?id=" + $id + "&quantity=" + newQuantity, true);
+    xmlhttp.send();
+}
