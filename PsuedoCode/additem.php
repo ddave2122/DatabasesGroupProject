@@ -2,12 +2,25 @@
 session_start();
 
 include_once 'config.dbconfig.inc';
+if($_SESSION['auhorized'] == false)
+    die("No Permissionz");
 
+$r1 = $_POST['r1oz'];
+$r2 = $_POST['r2oz'];
+$r4 = $_POST['r4oz'];
+$r8 = $_POST['r8oz'];
+$r16 = $_POST['r16oz'];
+$e1 = $_POST['e1oz'];
+$e2 = $_POST['e2oz'];
+$e4 = $_POST['e4oz'];
+$e8 = $_POST['e8oz'];
+$e16 = $_POST['e16oz'];
 
-//TODO need to redirect the user to the login page is they did not previously come from that page or are currently logged in
-//Retrieve the username and password
-$password_post = $_POST['password'];
-$username_post = $_POST['username'];
+$itemName = $_POST['name'];
+$distributor = $_POST['distributor_id'];
+$itemNumber = $_POST['item_number'];
+$amountBags = $_POST['amount_bags'];
+
 
 
 //Set the authorization to false by default for the session
@@ -70,6 +83,6 @@ else
             </head>
         <html>
 EOT;
-mysql_close($db);
+    mysql_close($db);
 
 }

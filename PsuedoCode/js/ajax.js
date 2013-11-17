@@ -251,7 +251,6 @@ xmlhttp.send(null);
 function addItem($id)
 {
     $currentQuantity = parseInt(document.getElementById("t"+$id).innerHTML, 10);
-    alert($currentQuantity);
     var xmlhttp;
     if (window.XMLHttpRequest)
     {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -270,7 +269,6 @@ function addItem($id)
             document.getElementById("t"+$id).value = newQuantity;
         }
     }
-    alert($id);
     var newQuantity = parseInt($currentQuantity, 10) + parseInt(document.getElementById($id).value, 10);
     document.getElementById("t"+$id).innerHTML = newQuantity+".00";
     xmlhttp.open("GET","php/updatedatabase.php?id=" + $id + "&quantity=" + newQuantity, true);
