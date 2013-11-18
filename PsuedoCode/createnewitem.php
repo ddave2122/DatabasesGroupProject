@@ -6,10 +6,6 @@ include('php/wrappers.php');
 //Create a wrapper object
 $wrap = new Wrappers();
 
-//Check for a verified user
-if($wrap->checkUserVerification() == false)
-    die("No permissionz!");
-
 //write the page header
 $wrap->createHeader();
 
@@ -21,7 +17,7 @@ echo <<< EOT
 <h1>
 Add Item
 </h1>
-<form name="createorder" action="additem.php" method="post">
+<form name="createItem" action="additem.php" method="post">
         <table>
         <tr>
             <th>Name</th>

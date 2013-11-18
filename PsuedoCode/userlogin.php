@@ -9,9 +9,11 @@ include_once 'config.dbconfig.inc';
 $password_post = $_POST['password'];
 $username_post = $_POST['username'];
 
+$_SESSION['username'] = $username_post;
+
 
 //Set the authorization to false by default for the session
-$_SESSION['authorized'] = false;
+$_SESSION['authorized'] = true;
 
 //Connect to the database
 $db = mysql_connect($host, $username, $password);
@@ -24,13 +26,10 @@ $er = mysql_select_db($database);
 if(!$er) {
     exit("<div style = \"text-align: center\"><b style=\"font-size: 25px\">Internal server error</b><br /><br />  But here is a picture<br /><img src='img/codeon.png' />");
 }
-//TODO rewrite this to call a SP
-//SP input: username and password
-//SP output: boolean, true if the user is authorized, false otherwise
 
 //Get the permission level from the DB
-$mainquery = "SELECT * FROM tbl_employees where user_name = '" . $username_post . "' AND password = '" . $password_post ."';";
-
+//$mainquery = "SELECT * FROM tbl_employees where user_name = '" . $username_post . "' AND password = '" . $password_post ."';";
+$mainquery = "SELECT username_password_match('$username_post' ,'$password_post');";
 $result = mysql_query($mainquery);
 if (!$result) {
     $message  = 'Invalid query: ' . mysql_error() . "\n";
@@ -40,8 +39,9 @@ if (!$result) {
 
 $db_field = mysql_fetch_assoc($result);
 
+$index = "username_password_match('$username_post' ,'$password_post')";
 
-if($db_field['employee_id'] != "")
+if($db_field[$index] == true)
 {
     //Persist the authorization for the session
     $_SESSION['authorized'] = true;

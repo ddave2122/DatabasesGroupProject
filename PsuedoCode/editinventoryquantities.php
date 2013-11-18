@@ -15,8 +15,6 @@ $wrap->createHeader();
 
 $wrap->createTopMenu(3, "Inventory Modification Options");
 
-//$wrap->createMainPageBody();
-
 $query = <<< EOT
 SELECT
     distinct

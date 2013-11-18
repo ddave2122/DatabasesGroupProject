@@ -22,7 +22,7 @@ echo <<< EOT
 <p>
     <ul>
         <li><a href="editinventoryquantities.php">Edit Inventory Quantities</a></li>
-        <li><a href="edititemprices.php">Edit Item Prices</a></li>
+        <!--li><a href="edititemprices.php">Edit Item Prices</a></li-->
         <li><a href="createnewitem.php">Create New Item</a></li>
         <li><a href="createorder.php">Create Order</a></li>
     </ul>

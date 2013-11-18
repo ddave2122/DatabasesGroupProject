@@ -1,9 +1,9 @@
 <?php
-
+error_reporting(0);
 class Wrappers
 {
-    private $redirectPage = 'google.com';  //!!Need to change before production!!//
-    private $isDevelopment = true;  //!!should come from the config page in the future!!//
+    public $redirectPage = 'index.html';
+    private $isDevelopment = false;  //!!should come from the config page in the future!!//
     private $inventoryModificationOptions = "";
     private $inventoryDisplayOptions = "";
     private $orderOptions = "";
@@ -16,6 +16,8 @@ class Wrappers
         {
             if($_SESSION['authorized'] == false)
                 return false;
+            else
+                return true;
         }
     }
 
